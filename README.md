@@ -12,9 +12,10 @@ An Virtual pet for your linux terminal!
 Install and start tuxogotchi with git:
 
 ```bash
-  git clone https://github.com/grzesiowski1223/TerminalPetTux
-  cd TerminalPetTux
-  bash tuxogotchi.sh
+  [Install tuxogotchi.sh from releases]
+  cd downloads
+  chmod +x tuxogotchi.sh
+  ./tuxogotchi.sh
 ```
     
 ## Authors
