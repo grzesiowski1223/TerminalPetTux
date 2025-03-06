@@ -17,6 +17,10 @@ Install and start tuxogotchi with git:
   chmod +x tuxogotchi.sh
   ./tuxogotchi.sh
 ```
+
+## Presentation/Apliance of my script
+
+[INSERT YOUTUBE VID HERE]
     
 ## Authors
 
