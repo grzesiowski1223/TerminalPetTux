@@ -1,7 +1,7 @@
 
 # Tuxogotchi
 
-An Virtual pet for your linux terminal!
+An Virtual pet for your linux terminal! Written in bash script.
 
 
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/jvBmTXmL/Zrzut-ekranu-2025-03-06-211749-removebg-preview.png" alt="Zrzut-ekranu-2025-03-06-211749-removebg-preview" border="0"></a>
