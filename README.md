@@ -4,7 +4,7 @@
 An Virtual pet for your linux terminal!
 
 
-![Logo](<a href="https://imgbb.com/"><img src="https://i.ibb.co/jvBmTXmL/Zrzut-ekranu-2025-03-06-211749-removebg-preview.png" alt="Zrzut-ekranu-2025-03-06-211749-removebg-preview" border="0"></a>
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/jvBmTXmL/Zrzut-ekranu-2025-03-06-211749-removebg-preview.png" alt="Zrzut-ekranu-2025-03-06-211749-removebg-preview" border="0"></a>
 
 
 ## Installation
