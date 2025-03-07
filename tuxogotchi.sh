@@ -1,15 +1,13 @@
 #!/bin/bash
 
-# Inicjalizacja zmiennych
 hunger=0
 happiness=10
 energy=10
 mood=10
 alive=1
-points=0  # Punkty do wydania w sklepie
-inventory=()  # Ekwipunek
+money=0
+inventory=()
 
-# Funkcja do wyświetlania ASCII Tuxa z odpowiednią buzią
 show_tux() {
     if [ $mood -ge 8 ]; then
         echo "       .--."
@@ -39,21 +37,19 @@ show_tux() {
     echo ""
 }
 
-# Funkcja do wyświetlania stanu Tuxa
 status() {
-    clear  # Czyści ekran, aby uniknąć bałaganu
+    clear
     show_tux
     echo "Stan Tuxa:"
     echo "Głód: $hunger"
     echo "Szczęście: $happiness"
     echo "Energia: $energy"
     echo "Samopoczucie: $mood"
-    echo "Punkty: $points"
+    echo "Pieniądze: $money"
     echo "Ekwipunek: ${inventory[@]}"
     echo ""
 }
 
-# Funkcja do karmienia Tuxa
 feed() {
     echo "Karmisz Tuxa. Mniam mniam!"
     hunger=$((hunger - 2))
@@ -63,42 +59,39 @@ feed() {
     energy=$((energy + 1))
     happiness=$((happiness + 1))
     mood=$((mood + 1))
-    points=$((points + 1))  # Zdobywasz punkty
+    money=$((money + 1))
     if [ $mood -gt 10 ]; then
         mood=10
     fi
-    status  # Wyświetl Tuxa po akcji
+    status
 }
 
-# Funkcja do zabawy z Tuxem
 play() {
     echo "Bawisz się z Tuxem. Tux jest szczęśliwy!"
     happiness=$((happiness + 2))
     energy=$((energy - 1))
     hunger=$((hunger + 1))
     mood=$((mood + 2))
-    points=$((points + 2))  # Zdobywasz punkty
+    money=$((money + 2))
     if [ $mood -gt 10 ]; then
         mood=10
     fi
-    status  # Wyświetl Tuxa po akcji
+    status
 }
 
-# Funkcja do usypiania Tuxa
 sleep() {
     echo "Tux idzie spać. Chrap chrap..."
     energy=$((energy + 3))
     hunger=$((hunger + 1))
     happiness=$((happiness - 1))
     mood=$((mood - 1))
-    points=$((points + 1))  # Zdobywasz punkty
+    money=$((money + 1))
     if [ $mood -lt 0 ]; then
         mood=0
     fi
-    status  # Wyświetl Tuxa po akcji
+    status
 }
 
-# Funkcja do sprawdzania, czy Tux żyje
 check_alive() {
     if [ $hunger -ge 10 ] || [ $happiness -le 0 ] || [ $energy -le 0 ]; then
         alive=0
@@ -108,43 +101,42 @@ check_alive() {
     fi
 }
 
-# Funkcja do wyświetlania sklepu
 shop() {
     echo "Witaj w sklepie!"
-    echo "Masz $points punktów."
+    echo "Masz $money pieniędzy."
     echo "Co chcesz kupić?"
-    echo "1. Super jedzenie (koszt: 5 punktów) – zmniejsza głód o 5"
-    echo "2. Super zabawka (koszt: 7 punktów) – zwiększa szczęście o 5"
-    echo "3. Energizer (koszt: 6 punktów) – zwiększa energię o 5"
+    echo "1. Super jedzenie (koszt: 5) – zmniejsza głód o 5"
+    echo "2. Super zabawka (koszt: 7) – zwiększa szczęście o 5"
+    echo "3. Energizer (koszt: 6) – zwiększa energię o 5"
     echo "4. Wyjdź z sklepu"
     read -p "Wybierz opcję (1-4): " choice
 
     case $choice in
         1)
-            if [ $points -ge 5 ]; then
-                points=$((points - 5))
+            if [ $money -ge 5 ]; then
+                money=$((money - 5))
                 inventory+=("Super jedzenie")
                 echo "Kupiłeś Super jedzenie!"
             else
-                echo "Nie masz wystarczająco punktów!"
+                echo "Nie masz wystarczająco pieniędzy!"
             fi
             ;;
         2)
-            if [ $points -ge 7 ]; then
-                points=$((points - 7))
+            if [ $money -ge 7 ]; then
+                money=$((money - 7))
                 inventory+=("Super zabawka")
                 echo "Kupiłeś Super zabawkę!"
             else
-                echo "Nie masz wystarczająco punktów!"
+                echo "Nie masz wystarczająco pieniędzy!"
             fi
             ;;
         3)
-            if [ $points -ge 6 ]; then
-                points=$((points - 6))
+            if [ $money -ge 6 ]; then
+                money=$((money - 6))
                 inventory+=("Energizer")
                 echo "Kupiłeś Energizer!"
             else
-                echo "Nie masz wystarczająco punktów!"
+                echo "Nie masz wystarczająco pieniędzy!"
             fi
             ;;
         4)
@@ -154,10 +146,9 @@ shop() {
             echo "Nieprawidłowy wybór."
             ;;
     esac
-    status  # Wyświetl Tuxa po akcji
+    status
 }
 
-# Funkcja do używania przedmiotów z ekwipunku
 use_item() {
     echo "Twój ekwipunek: ${inventory[@]}"
     read -p "Który przedmiot chcesz użyć? (wpisz nazwę lub 'anuluj'): " item
@@ -187,12 +178,11 @@ use_item() {
             echo "Nie masz takiego przedmiotu w ekwipunku."
             ;;
     esac
-    status  # Wyświetl Tuxa po akcji
+    status
 }
 
-# Główna pętla gry
 while [ $alive -eq 1 ]; do
-    status  # Wyświetl Tuxa na początku każdego cyklu
+    status
     echo "Co chcesz zrobić?"
     echo "1. Nakarm Tuxa"
     echo "2. Baw się z Tuxem"
