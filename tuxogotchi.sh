@@ -13,26 +13,26 @@ inventory=()  # Ekwipunek
 show_tux() {
     if [ $mood -ge 8 ]; then
         echo "       .--."
-        echo "      |o_o |"
+        echo "      |^_^ |"
         echo "      |:_/ |"
         echo "     //   \ \\"
-        echo "    (| ^_^ | )"
+        echo "    (|     | )"
         echo "   /'\_   _/'\`\\"
         echo "   \___)=(___/"
     elif [ $mood -ge 4 ]; then
         echo "       .--."
-        echo "      |o_o |"
+        echo "      |•_• |"
         echo "      |:_/ |"
         echo "     //   \ \\"
-        echo "    (| •_• | )"
+        echo "    (|     | )"
         echo "   /'\_   _/'\`\\"
         echo "   \___)=(___/"
     else
         echo "       .--."
-        echo "      |o_o |"
+        echo "      |T_T |"
         echo "      |:_/ |"
         echo "     //   \ \\"
-        echo "    (| T_T | )"
+        echo "    (|     | )"
         echo "   /'\_   _/'\`\\"
         echo "   \___)=(___/"
     fi
