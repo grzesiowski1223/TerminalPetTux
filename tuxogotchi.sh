@@ -40,18 +40,18 @@ show_tux() {
 status() {
     clear
     show_tux
-    echo "Stan Tuxa:"
-    echo "Głód: $hunger"
-    echo "Szczęście: $happiness"
-    echo "Energia: $energy"
-    echo "Samopoczucie: $mood"
-    echo "Pieniądze: $money"
-    echo "Ekwipunek: ${inventory[@]}"
+    echo "Tux's Status:"
+    echo "Hunger: $hunger"
+    echo "Happiness: $happiness"
+    echo "Energy: $energy"
+    echo "Mood: $mood"
+    echo "Money: $money"
+    echo "Inventory: ${inventory[@]}"
     echo ""
 }
 
 feed() {
-    echo "Karmisz Tuxa. Mniam mniam!"
+    echo "You feed Tux. Yum yum!"
     hunger=$((hunger - 2))
     if [ $hunger -lt 0 ]; then
         hunger=0
@@ -67,7 +67,7 @@ feed() {
 }
 
 play() {
-    echo "Bawisz się z Tuxem. Tux jest szczęśliwy!"
+    echo "You play with Tux. Tux is happy!"
     happiness=$((happiness + 2))
     energy=$((energy - 1))
     hunger=$((hunger + 1))
@@ -80,7 +80,7 @@ play() {
 }
 
 sleep() {
-    echo "Tux idzie spać. Chrap chrap..."
+    echo "Tux goes to sleep. Zzz..."
     energy=$((energy + 3))
     hunger=$((hunger + 1))
     happiness=$((happiness - 1))
@@ -95,87 +95,87 @@ sleep() {
 check_alive() {
     if [ $hunger -ge 10 ] || [ $happiness -le 0 ] || [ $energy -le 0 ]; then
         alive=0
-        echo "Niestety, Tux umarł. :("
+        echo "Unfortunately, Tux has died. :("
         show_tux
         exit 1
     fi
 }
 
 shop() {
-    echo "Witaj w sklepie!"
-    echo "Masz $money pieniędzy."
-    echo "Co chcesz kupić?"
-    echo "1. Super jedzenie (koszt: 5) – zmniejsza głód o 5"
-    echo "2. Super zabawka (koszt: 7) – zwiększa szczęście o 5"
-    echo "3. Energizer (koszt: 6) – zwiększa energię o 5"
-    echo "4. Wyjdź z sklepu"
-    read -p "Wybierz opcję (1-4): " choice
+    echo "Welcome to the shop!"
+    echo "You have $money money."
+    echo "What would you like to buy?"
+    echo "1. Super Food (cost: 5) – reduces hunger by 5"
+    echo "2. Super Toy (cost: 7) – increases happiness by 5"
+    echo "3. Energizer (cost: 6) – increases energy by 5"
+    echo "4. Exit the shop"
+    read -p "Choose an option (1-4): " choice
 
     case $choice in
         1)
             if [ $money -ge 5 ]; then
                 money=$((money - 5))
-                inventory+=("Super jedzenie")
-                echo "Kupiłeś Super jedzenie!"
+                inventory+=("Super Food")
+                echo "You bought Super Food!"
             else
-                echo "Nie masz wystarczająco pieniędzy!"
+                echo "You don't have enough money!"
             fi
             ;;
         2)
             if [ $money -ge 7 ]; then
                 money=$((money - 7))
-                inventory+=("Super zabawka")
-                echo "Kupiłeś Super zabawkę!"
+                inventory+=("Super Toy")
+                echo "You bought a Super Toy!"
             else
-                echo "Nie masz wystarczająco pieniędzy!"
+                echo "You don't have enough money!"
             fi
             ;;
         3)
             if [ $money -ge 6 ]; then
                 money=$((money - 6))
                 inventory+=("Energizer")
-                echo "Kupiłeś Energizer!"
+                echo "You bought an Energizer!"
             else
-                echo "Nie masz wystarczająco pieniędzy!"
+                echo "You don't have enough money!"
             fi
             ;;
         4)
-            echo "Wychodzisz ze sklepu."
+            echo "You exit the shop."
             ;;
         *)
-            echo "Nieprawidłowy wybór."
+            echo "Invalid choice."
             ;;
     esac
     status
 }
 
 use_item() {
-    echo "Twój ekwipunek: ${inventory[@]}"
-    read -p "Który przedmiot chcesz użyć? (wpisz nazwę lub 'anuluj'): " item
+    echo "Your inventory: ${inventory[@]}"
+    read -p "Which item would you like to use? (type the name or 'cancel'): " item
     case $item in
-        "Super jedzenie")
+        "Super Food")
             hunger=$((hunger - 5))
             if [ $hunger -lt 0 ]; then
                 hunger=0
             fi
-            inventory=("${inventory[@]/Super jedzenie}")
-            echo "Użyto Super jedzenia. Głód Tuxa zmniejszył się o 5!"
+            inventory=("${inventory[@]/Super Food}")
+            echo "You used Super Food. Tux's hunger decreased by 5!"
             ;;
-        "Super zabawka")
+        "Super Toy")
             happiness=$((happiness + 5))
-            inventory=("${inventory[@]/Super zabawka}")
-            echo "Użyto Super zabawki. Szczęście Tuxa wzrosło o 5!"
+            inventory=("${inventory[@]/Super Toy}")
+            echo "You used a Super Toy. Tux's happiness increased by 5!"
             ;;
         "Energizer")
             energy=$((energy + 5))
             inventory=("${inventory[@]/Energizer}")
-            echo "Użyto Energizera. Energia Tuxa wzrosła o 5!"
+            echo "You used an Energizer. Tux's energy increased by 5!"
             ;;
-        "anuluj")
-            echo "Anulowano."
+        "cancel")
+            echo "Cancelled."
             ;;
         *)
-            echo "Nie masz takiego przedmiotu w ekwipunku."
+            echo "You don't have this item in your inventory."
             ;;
     esac
     status
@@ -183,14 +183,14 @@ use_item() {
 
 while [ $alive -eq 1 ]; do
     status
-    echo "Co chcesz zrobić?"
-    echo "1. Nakarm Tuxa"
-    echo "2. Baw się z Tuxem"
-    echo "3. Uśpij Tuxa"
-    echo "4. Odwiedź sklep"
-    echo "5. Użyj przedmiotu z ekwipunku"
-    echo "6. Wyjdź z gry"
-    read -p "Wybierz opcję (1-6): " choice
+    echo "What would you like to do?"
+    echo "1. Feed Tux"
+    echo "2. Play with Tux"
+    echo "3. Put Tux to sleep"
+    echo "4. Visit the shop"
+    echo "5. Use an item from the inventory"
+    echo "6. Exit the game"
+    read -p "Choose an option (1-6): " choice
 
     case $choice in
         1) feed ;;
@@ -198,8 +198,8 @@ while [ $alive -eq 1 ]; do
         3) sleep ;;
         4) shop ;;
         5) use_item ;;
-        6) echo "Do widzenia!"; exit 0 ;;
-        *) echo "Nieprawidłowy wybór. Spróbuj ponownie." ;;
+        6) echo "Goodbye!"; exit 0 ;;
+        *) echo "Invalid choice. Try again." ;;
     esac
 
     check_alive
