@@ -18,7 +18,7 @@ Install and start tuxogotchi with git:
   ./tuxogotchi.sh
 ```
 
-## Presentation/Apliance of my script
+## Presentation of use
 
 [INSERT YOUTUBE VID HERE]
     
