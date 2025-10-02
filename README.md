@@ -4,7 +4,7 @@ Tuxogotchi is a **virtual pet for your Linux terminal**, written entirely in Bas
 It brings a retro Tamagotchi-like experience into your command line.  
 Feed your tux, play with it, and keep it happy while you work. If you ignore it, it might not survive for long!
 
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/jvBmTXmL/Zrzut-ekranu-2025-03-06-211749-removebg-preview.png" alt="Tuxogotchi preview" border="0"></a>
+<a href=""><img src="https://i.ibb.co/jvBmTXmL/Zrzut-ekranu-2025-03-06-211749-removebg-preview.png" alt="Tuxogotchi preview" border="0"></a>
 
 ---
 
