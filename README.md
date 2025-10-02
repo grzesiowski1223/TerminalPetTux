@@ -10,12 +10,17 @@ Feed your tux, play with it, and keep it happy while you work. If you ignore it,
 
 ## Features
 
-- Simple interactive commands:
-  - Feed tux  
-  - Play with tux  
-  - Check tux's mood and health  
- - Portable and easy to run on most Linux / Windows systems
-
+- Terminal-based virtual pet game  
+- Interactive actions:
+  - Feed Tux  
+  - Play with Tux  
+  - Put Tux to sleep  
+  - Visit the shop to buy items  
+  - Use items from inventory  
+- Tux has stats: Hunger, Happiness, Energy, Mood, Money  
+- ASCII art shows Tux's current mood  
+- Inventory system with consumable items  
+- Game over when Tux dies  
 
 ---
 ## Presentation of use
