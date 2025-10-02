@@ -29,5 +29,6 @@ Feed your tux, play with it, and keep it happy while you work. If you ignore it,
 Download the script from the [Releases](../../releases) page and run it:
 
 ```bash
-chmod +x tuxogotchi.sh
-./tuxogotchi.sh
+cd /Downloads
+chmod +x installscript.sh
+./installscript.sh
