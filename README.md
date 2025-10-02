@@ -14,7 +14,7 @@ Feed your tux, play with it, and keep it happy while you work. If you ignore it,
   - Feed tux  
   - Play with tux  
   - Check tux's mood and health  
-  - Portable and easy to run on most Linux / Windows systems
+ - Portable and easy to run on most Linux / Windows systems
 
 
 ---
