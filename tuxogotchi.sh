@@ -10,43 +10,81 @@ inventory=()
 
 show_tux() {
     if [ $mood -ge 8 ]; then
-        echo "       .--."
-        echo "      |^_^ |"
-        echo "      |:_/ |"
-        echo "     //   \ \\"
-        echo "    (|     | )"
-        echo "   /'\_   _/'\`\\"
-        echo "   \___)=(___/"
+        echo "          .a8888b."
+        echo "         d888888b."
+        echo "         8P\"YP\"Y8"
+        echo "         88|^_^|88"
+        echo "         8'    .88"
+        echo "         8\`._.' Y8."
+        echo "        d/      \`8b."
+        echo "      .dP   .     Y8b."
+        echo "     d8:'   \"   \`::88b."
+        echo "    d8\"           \`Y88b"
+        echo "   :8P     '       :888"
+        echo "    8a.    :      _a88P"
+        echo "  ._/\"Yaa_ :    .| 88P|"
+        echo "   \    YP\"      \`| 8P  \`."
+        echo "   /     \._____.d|    .'"
+        echo "  \`--..__)888888P\`._.'"
     elif [ $mood -ge 4 ]; then
-        echo "       .--."
-        echo "      |•_• |"
-        echo "      |:_/ |"
-        echo "     //   \ \\"
-        echo "    (|     | )"
-        echo "   /'\_   _/'\`\\"
-        echo "   \___)=(___/"
+        echo "          .a8888b."
+        echo "         d888888b."
+        echo "         8P\"YP\"Y8"
+        echo "         88|•_•|88"
+        echo "         8'    .88"
+        echo "         8\`._.' Y8."
+        echo "        d/      \`8b."
+        echo "      .dP   .     Y8b."
+        echo "     d8:'   \"   \`::88b."
+        echo "    d8\"           \`Y88b"
+        echo "   :8P     '       :888"
+        echo "    8a.    :      _a88P"
+        echo "  ._/\"Yaa_ :    .| 88P|"
+        echo "   \    YP\"      \`| 8P  \`."
+        echo "   /     \._____.d|    .'"
+        echo "  \`--..__)888888P\`._.'"
     else
-        echo "       .--."
-        echo "      |T_T |"
-        echo "      |:_/ |"
-        echo "     //   \ \\"
-        echo "    (|     | )"
-        echo "   /'\_   _/'\`\\"
-        echo "   \___)=(___/"
+        echo "          .a8888b."
+        echo "         d888888b."
+        echo "         8P8\"YP\"Y8"
+        echo "         8|T_T|88"
+        echo "         8'    .88"
+        echo "         8\`._.' Y8."
+        echo "        d/      \`8b."
+        echo "      .dP   .     Y8b."
+        echo "     d8:'   \"   \`::88b."
+        echo "    d8\"           \`Y88b"
+        echo "   :8P     '       :888"
+        echo "    8a.    :      _a88P"
+        echo "  ._/\"Yaa_ :    .| 88P|"
+        echo "   \    YP\"      \`| 8P  \`."
+        echo "   /     \._____.d|    .'"
+        echo "  \`--..__)888888P\`._.'"
     fi
     echo ""
 }
 
 status() {
     clear
-    show_tux
-    echo "Tux's Status:"
-    echo "Hunger: $hunger"
-    echo "Happiness: $happiness"
-    echo "Energy: $energy"
-    echo "Mood: $mood"
-    echo "Money: $money"
-    echo "Inventory: ${inventory[@]}"
+    local ascii_lines=()
+    while IFS= read -r line; do
+        ascii_lines+=("$line")
+    done < <(show_tux)
+    
+    local status_lines=(
+        "Tux's Status:"
+        "Hunger: $hunger"
+        "Happiness: $happiness" 
+        "Energy: $energy"
+        "Mood: $mood"
+        "Money: $money"
+        "Inventory: ${inventory[@]}"
+        "" "" "" "" "" "" "" "" ""  # puste linie dla wyrównania
+    )
+    
+    for ((i=0; i<${#ascii_lines[@]}; i++)); do
+        printf "%-35s %s\n" "${ascii_lines[i]}" "${status_lines[i]}"
+    done
     echo ""
 }
 
@@ -94,9 +132,26 @@ sleep() {
 
 check_alive() {
     if [ $hunger -ge 10 ] || [ $happiness -le 0 ] || [ $energy -le 0 ]; then
+        sleep 2
         alive=0
         echo "Unfortunately, Tux has died. :("
-        show_tux
+        echo
+        echo "          .a8888b."
+        echo "         d888888b."
+        echo "         8P\"YP\"Y8"
+        echo "         88|X_X|88"
+        echo "         8'    .88"
+        echo "         8\`._.' Y8."
+        echo "        d/      \`8b."
+        echo "      .dP   .     Y8b."
+        echo "     d8:'   \"   \`::88b."
+        echo "    d8\"           \`Y88b"
+        echo "   :8P     '       :888"
+        echo "    8a.    :      _a88P"
+        echo "  ._/\"Yaa_ :    .| 88P|"
+        echo "   \    YP\"      \`| 8P  \`."
+        echo "   /     \._____.d|    .'"
+        echo "  \`--..__)888888P\`._.'"
         exit 1
     fi
 }
