@@ -22,7 +22,6 @@ Feed your tux, play with it, and keep it happy while you work. If you ignore it,
 
 [INSERT YOUTUBE VID HERE]
 
----
 ## Installation
 
 ### Quick Install
