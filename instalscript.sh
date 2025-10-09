@@ -33,7 +33,7 @@ case "$response" in
         echo ""
         sleep 1
 
-        # Symulacja postępu instalacji
+        
         for i in {0..100..10}; do
             echo -ne "[${PURPLE}$(printf "%0.s#" $(seq 1 $((i/2))))${NC}$(printf "%0.s-" $(seq 1 $((50-i/2))))] $i% \r"
             sleep 0.2
@@ -48,7 +48,7 @@ case "$response" in
         sleep 1
         sudo chmod +x /usr/local/bin/tuxogotchi
 
-        # Symulacja postępu chmod
+        
         for i in {0..100..20}; do
             echo -ne "[${PURPLE}$(printf "%0.s#" $(seq 1 $((i/2))))${NC}$(printf "%0.s-" $(seq 1 $((50-i/2))))] $i% \r"
             sleep 0.2
